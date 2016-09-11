@@ -1,3 +1,12 @@
+/**
+* EuroMillionsDB.js unit tests
+* 1) Should generate a connector
+* 2) Should get correct URL
+* 3) Should get correct collection
+* 4) Should insert a record
+* 5) Should update a record
+* 6) Should retreive a record
+**/
 let chai = require('chai');
 chai.should();
 chai.use(require('chai-things'));
