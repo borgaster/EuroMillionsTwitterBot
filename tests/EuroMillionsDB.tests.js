@@ -1,12 +1,13 @@
 /**
-* EuroMillionsDB.js unit tests
-* 1) Should generate a connector
-* 2) Should get correct URL
-* 3) Should get correct collection
-* 4) Should insert a record
-* 5) Should update a record
-* 6) Should retreive a record
-**/
+ * EuroMillionsDB.js unit tests
+ * 1) Should generate a connector
+ * 2) Should get correct URL
+ * 3) Should get correct collection
+ * 4) Should insert a record
+ * 5) Should update a record
+ * 6) Should retreive a record
+ **/
+ 
 let chai = require('chai');
 chai.should();
 chai.use(require('chai-things'));
@@ -31,7 +32,7 @@ describe('EuroMillionsDB', () => {
     it('Should get correct URL', () => {
         expect(connector.getUrl()).is.equal("mongodb://localhost:27017/EuroMillionsDraw");
     });
-    it('Should get correct collection', ()  => {
+    it('Should get correct collection', () => {
         expect(connector.getCollection()).is.equal('EuroMillions');
     });
     it('Should insert a record', (done) => {
@@ -63,7 +64,7 @@ describe('EuroMillionsDB', () => {
 
     });
     it("Should update a record", (done) => {
-        setTimeout( () => {
+        setTimeout(() => {
             let newKey = EuroMillionsKey.generateKey();
             let newRecord = {
                 user: "@TestUser",
@@ -84,19 +85,18 @@ describe('EuroMillionsDB', () => {
         });
     });
     it("Should retreive a record", (done) => {
-    	setTimeout(() => {
-    		connector.getRecords(record).
-    		then((data) => {
-    			if(data.length > 0){
-    				done()
-    			}
-    			else{
-    				done("Tried to retreive but no record found");
-    			}
-    		}, (err) => {
-    			done(err);
-    		})
-    	})
+        setTimeout(() => {
+            connector.getRecords(record).
+            then((data) => {
+                if (data.length > 0) {
+                    done()
+                } else {
+                    done("Tried to retreive but no record found");
+                }
+            }, (err) => {
+                done(err);
+            })
+        })
     })
 
 });
