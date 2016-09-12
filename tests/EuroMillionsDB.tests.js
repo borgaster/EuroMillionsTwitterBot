@@ -1,4 +1,4 @@
-/**
+/* 
  * EuroMillionsDB.js unit tests
  * 1) Should generate a connector
  * 2) Should get correct URL
@@ -6,7 +6,7 @@
  * 4) Should insert a record
  * 5) Should update a record
  * 6) Should retreive a record
- **/
+ */
  
 let chai = require('chai');
 chai.should();
@@ -16,18 +16,18 @@ let EuroMillionsKey = require('../EuroMillions.js');
 let EuroMillionsDB = require('../EuroMillionsDB.js');
 let MongoClient = require('mongodb').MongoClient,
     assert = require('assert');
-
 let key = EuroMillionsKey.generateKey();
 let url = "mongodb://localhost:27017/EuroMillionsDraw";
-let collection = "EuroMillions"
+let collection = "EuroMillions";
 let connector = EuroMillionsDB(url, collection);
 let record = {
     user: "@TestUser",
     key: key
-}
+};
+
 describe('EuroMillionsDB', () => {
     it('Should generate a connector', () => {
-        expect(connector).is.not.undefined
+        expect(connector).is.not.undefined;
     });
     it('Should get correct URL', () => {
         expect(connector.getUrl()).is.equal("mongodb://localhost:27017/EuroMillionsDraw");
@@ -52,15 +52,15 @@ describe('EuroMillionsDB', () => {
                                 done();
                                 db.close();
                             }
-                        })
+                        });
                     }
                 });
 
             }, (err) => {
-                done(err)
+                done(err);
             });
 
-        })
+        });
 
     });
     it("Should update a record", (done) => {
@@ -69,17 +69,17 @@ describe('EuroMillionsDB', () => {
             let newRecord = {
                 user: "@TestUser",
                 key: key
-            }
+            };
             connector.update(newRecord, "@TestUser").
             then((data) => {
                 if (data.result.nModified === 1) {
-                    done()
+                    done();
                 } else {
                     done("Error updating");
                 }
 
             }, (err) => {
-                done(err)
+                done(err);
             });
 
         });
@@ -89,14 +89,14 @@ describe('EuroMillionsDB', () => {
             connector.getRecords(record).
             then((data) => {
                 if (data.length > 0) {
-                    done()
+                    done();
                 } else {
                     done("Tried to retreive but no record found");
                 }
             }, (err) => {
                 done(err);
-            })
-        })
-    })
+            });
+        });
+    });
 
 });
