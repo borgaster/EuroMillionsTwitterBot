@@ -1,4 +1,4 @@
-var EuroMillions = {
+let EuroMillions = {
     generateKey: function() {
         let key = {
             numbers: Array.apply(0, { length: 5 })
@@ -9,9 +9,9 @@ var EuroMillions = {
                 .map(function(elem) {
                     return Math.floor(Math.random() * 11) + 1;
                 })
-        }
-        return key
+        };
+        return key;
     }
-}
+};
 
-module.exports = EuroMillions
+module.exports = EuroMillions;
