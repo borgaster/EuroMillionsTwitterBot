@@ -20,7 +20,8 @@ request(options, function(err, res, body) {
         console.log('Error :', err);
         return;
     }
-    let myDate = new Date(parseInt(body.Date.replace(/\//g, "").replace(/Date/g, "").replace(/[{()}]/g, ""), 10));
+    //TODO: Add date of draw to message. Try to improve this replace mess...
+    //let myDate = new Date(parseInt(body.Date.replace(/\//g, "").replace(/Date/g, "").replace(/[{()}]/g, ""), 10));
     let key = {
         numbers: [parseInt(body.Num1, 10), parseInt(body.Num2, 10),
             parseInt(body.Num3, 10), parseInt(body.Num4, 10), parseInt(body.Num5, 10)
