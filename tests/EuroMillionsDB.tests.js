@@ -9,13 +9,13 @@
  */
  /*jshint expr: true*/
  
-let chai = require('chai');
+let chai = require("chai");
 chai.should();
-chai.use(require('chai-things'));
+chai.use(require("chai-things"));
 let expect = chai.expect; // we are using the "expect" style of Chai
-let EuroMillionsKey = require('../EuroMillions.js');
-let EuroMillionsDB = require('../EuroMillionsDB.js');
-let MongoClient = require('mongodb').MongoClient;
+let EuroMillionsKey = require("../EuroMillions.js");
+let EuroMillionsDB = require("../EuroMillionsDB.js");
+let MongoClient = require("mongodb").MongoClient;
 let key = EuroMillionsKey.generateKey();
 let url = "mongodb://localhost:27017/EuroMillionsDraw";
 let collection = "EuroMillions";
@@ -26,17 +26,17 @@ let record = {
     checked: false
 };
 
-describe('EuroMillionsDB', () => {
-    it('Should generate a connector', () => {
+describe("EuroMillionsDB", () => {
+    it("Should generate a connector", () => {
         expect(connector).is.not.undefined;
     });
-    it('Should get correct URL', () => {
+    it("Should get correct URL", () => {
         expect(connector.getUrl()).is.equal("mongodb://localhost:27017/EuroMillionsDraw");
     });
-    it('Should get correct collection', () => {
-        expect(connector.getCollection()).is.equal('EuroMillions');
+    it("Should get correct collection", () => {
+        expect(connector.getCollection()).is.equal("EuroMillions");
     });
-    it('Should insert a record', (done) => {
+    it("Should insert a record", (done) => {
         setTimeout(() => {
             connector.insert(record).
             then(() => {
