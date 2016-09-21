@@ -2,7 +2,7 @@
 		/*	Database connector														*/
 		/****************************************************************************/
 
-let MongoClient = require('mongodb').MongoClient, assert = require('assert');
+let MongoClient = require('mongodb').MongoClient;
  
 
 /*Factory function to generate a connector to interact with the database*/
