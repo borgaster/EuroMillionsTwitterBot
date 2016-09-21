@@ -29,7 +29,7 @@ Twitter.stream("statuses/filter", { track: "#MakeMeRichEuromillions" }, function
         }, (err) => {
             console.log(err);
         });
-        Twitter.post("direct_messages/new", reply, function(error, tweetReply, response) {
+        Twitter.post("direct_messages/new", reply, function(error, tweetReply) {
             //if we get an error print it out
             if (error) {
                 console.log(error);
