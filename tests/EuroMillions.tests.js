@@ -8,7 +8,6 @@
 /*jshint expr: true*/
 
 let chai = require("chai");
-let expectRes;
 chai.should();
 chai.use(require("chai-things"));
 let expect = chai.expect; // we are using the "expect" style of Chai
