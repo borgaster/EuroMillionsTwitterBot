@@ -34,10 +34,10 @@ request(options, function(err, res, body) {
     connector.getRecords({ checked: false }).then((data) => {
         data.forEach((dataElem) => {
             let correctNumbers = key.numbers.filter((number) => {
-                return dataElem.key.numbers.indexOf(number) != -1;
+                return dataElem.key.numbers.indexOf(number) !== -1;
             });
             let correctStars = key.stars.filter((number) => {
-                return dataElem.key.stars.indexOf(number) != -1;
+                return dataElem.key.stars.indexOf(number) !== -1;
             });
             let reply = {
                 text: "Hi " + dataElem.user +
