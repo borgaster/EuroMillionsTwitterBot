@@ -7,6 +7,7 @@
  * 5) Should update a record
  * 6) Should retreive a record
  */
+ /*jshint expr: true*/
  
 let chai = require('chai');
 chai.should();
@@ -14,15 +15,15 @@ chai.use(require('chai-things'));
 let expect = chai.expect; // we are using the "expect" style of Chai
 let EuroMillionsKey = require('../EuroMillions.js');
 let EuroMillionsDB = require('../EuroMillionsDB.js');
-let MongoClient = require('mongodb').MongoClient,
-    assert = require('assert');
+let MongoClient = require('mongodb').MongoClient;
 let key = EuroMillionsKey.generateKey();
 let url = "mongodb://localhost:27017/EuroMillionsDraw";
 let collection = "EuroMillions";
 let connector = EuroMillionsDB(url, collection);
 let record = {
     user: "@TestUser",
-    key: key
+    key: key,
+    checked: false
 };
 
 describe('EuroMillionsDB', () => {
@@ -38,7 +39,7 @@ describe('EuroMillionsDB', () => {
     it('Should insert a record', (done) => {
         setTimeout(() => {
             connector.insert(record).
-            then((data) => {
+            then(() => {
                 MongoClient.connect(url, (err, db) => {
                     if (err) {
                         done(err);
@@ -68,7 +69,8 @@ describe('EuroMillionsDB', () => {
             let newKey = EuroMillionsKey.generateKey();
             let newRecord = {
                 user: "@TestUser",
-                key: key
+                key: newKey,
+                checked: false
             };
             connector.update(newRecord, "@TestUser").
             then((data) => {
