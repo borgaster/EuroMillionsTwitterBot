@@ -20,8 +20,11 @@ request(options, function(err, res, body) {
         console.log('Error :', err);
         return;
     }
-    //TODO: Add date of draw to message. Try to improve this replace mess...
-    //let myDate = new Date(parseInt(body.Date.replace(/\//g, "").replace(/Date/g, "").replace(/[{()}]/g, ""), 10));
+    //TODO: Try to improve this replace mess...
+    let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    let myDate = new Date(parseInt(body.Date.replace(/\//g, "").replace(/Date/g, "")
+                                                                .replace(/[{()}]/g, ""), 10))
+                                                                .toLocaleDateString("en-GB", options);
     let key = {
         numbers: [parseInt(body.Num1, 10), parseInt(body.Num2, 10),
             parseInt(body.Num3, 10), parseInt(body.Num4, 10), parseInt(body.Num5, 10)
@@ -38,13 +41,12 @@ request(options, function(err, res, body) {
             });
             let reply = {
                 text: "Hi " + dataElem.user +
-                    ", the winner combination for this draw is: Numbers - " +
+                    " the winner combination for "+myDate.toString()+"  is: Numbers - " +
                     key.numbers.toString() +
                     " Stars -  " + key.stars.toString()+". You got "+
                     correctNumbers.length+" numbers and "+ correctStars.length+" stars correct",
                 screen_name: dataElem.user
             };
-            console.log(reply);
             Twitter.post('direct_messages/new', reply, function(error, tweetReply, response) {
                 //if we get an error print it out
                 if (error) {
@@ -54,7 +56,7 @@ request(options, function(err, res, body) {
                 console.log(tweetReply.text);
             });
             //Do not check the same record again.
-            dataElem.checked = true;
+            dataElem.checked = false;
             connector.update(dataElem, dataElem.user);
         });
 
