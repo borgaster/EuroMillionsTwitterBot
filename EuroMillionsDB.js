@@ -1,8 +1,8 @@
-		/****************************************************************************/
-		/*	Database connector														*/
-		/****************************************************************************/
+/****************************************************************************/
+/*	Database connector														*/
+/****************************************************************************/
 
-let MongoClient = require('mongodb').MongoClient;
+let MongoClient = require("mongodb").MongoClient;
  
 
 /*Factory function to generate a connector to interact with the database*/
@@ -55,7 +55,7 @@ EuroMillionsDB.proto = {
 					reject(err);
 				}
 				else{
-					db.collection(collection).update({'user': username}, data,
+					db.collection(collection).update({"user": username}, data,
 						{upsert: true}, (err, result) => {
 						if(err){
 							reject(err);
