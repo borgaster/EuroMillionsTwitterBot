@@ -5,8 +5,10 @@
 * 3) Numbers should be between 1 and 50
 * 4) Stars should be between 1 and 11
 **/
+/*jshint expr: true*/
 
 let chai = require('chai');
+let expectRes;
 chai.should();
 chai.use(require('chai-things'));
 let expect = chai.expect; // we are using the "expect" style of Chai
@@ -27,5 +29,5 @@ describe('EuroMillionsKey', function() {
     });
     it('Stars should be between 1 and 11', function() {
         key.stars.should.all.be.within(1, 11);
-    })
+    });
 });
