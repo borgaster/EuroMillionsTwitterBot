@@ -2,11 +2,22 @@ let TwitterPackage = require("twitter");
 let EuroMillionsKey = require("./EuroMillions.js");
 let EuroMillionsDB = require("./EuroMillionsDB.js");
 let secret = require("./TwitterApiKeys.js");
-
+let EuroMillionsDraw = require("./EuroMillionsDraw.js");
+let schedule = require("node-schedule");
 let Twitter = new TwitterPackage(secret);
-
 let connector = EuroMillionsDB("mongodb://localhost:27017/EuroMillionsDraw", "EuroMillions");
 
+let rule = new schedule.RecurrenceRule();
+rule.minute = new schedule.Range(0, 59, 1);
+schedule.scheduleJob(rule, function(){
+     EuroMillionsDraw.fetchResults().then((result) => {
+        console.log("resolved");
+        console.log(result);
+    }, (err) => {
+        console.log("error");
+        console.log(err);
+    });
+});
 Twitter.stream("statuses/filter", { track: "#MakeMeRichEuromillions" }, function(stream) {
     stream.on("data", function(tweet) {
         console.log(tweet.text);
