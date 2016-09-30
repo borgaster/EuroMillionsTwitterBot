@@ -23,7 +23,7 @@ Twitter.stream("statuses/filter", { track: "#MakeMeRichEuromillions" }, function
                 " and your stars are: " + key.stars.toString(),
             screen_name: tweet.user.screen_name
         };
-        connector.update(record, tweet.user.screen_name).
+        connector.update(record).
         then(() => {
             console.log(tweet.user.screen_name + " got a chance to be filthy rich!");
         }, (err) => {
@@ -43,3 +43,4 @@ Twitter.stream("statuses/filter", { track: "#MakeMeRichEuromillions" }, function
         console.log(error);
     });
 });
+
