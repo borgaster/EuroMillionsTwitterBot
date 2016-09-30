@@ -1,12 +1,13 @@
 /**
-* EuroMillions.js unit tests
-* 1) Should not an empty key
-* 2) Should get exactly 5 numbers and 2 stars
-* 3) Numbers should be between 1 and 50
-* 4) Stars should be between 1 and 11
-**/
+ * EuroMillions.js unit tests
+ * 1) Should not an empty key
+ * 2) Should get exactly 5 numbers and 2 stars
+ * 3) Numbers should be between 1 and 50
+ * 4) Stars should be between 1 and 11
+ * 5) Stars should be unique
+ * 6) Numbers should be unique
+ **/
 /*jshint expr: true*/
-
 let chai = require("chai");
 chai.should();
 chai.use(require("chai-things"));
@@ -28,5 +29,11 @@ describe("EuroMillionsKey", function() {
     });
     it("Stars should be between 1 and 11", function() {
         key.stars.should.all.be.within(1, 11);
+    });
+    it("Stars should be unique", function() {
+        expect(key.stars.length === new Set(key.stars).size ).to.be.true;
+    });
+    it("Numbers should be unique", function(){
+        expect(key.numbers.length === new Set(key.stars).size).to.be.true;
     });
 });
