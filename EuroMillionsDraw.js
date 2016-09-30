@@ -98,7 +98,7 @@ let EuroMillionsDraw = {
                     });
                     //Update records
                     if (data.length > 0) {
-                        connector.updateChecked(data).then((result) => {
+                        connector.updateChecked(data).then(() => {
                             fulfill(data.length + " players entered the draw and got their results");
                         }, (err) => {
                             reject(err);
