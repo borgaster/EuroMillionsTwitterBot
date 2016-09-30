@@ -38,7 +38,7 @@ describe("EuroMillionsDB", () => {
     });
     it("Should insert a record", (done) => {
         setTimeout(() => {
-            connector.insert(record).
+            connector.update(record).
             then(() => {
                 MongoClient.connect(url, (err, db) => {
                     if (err) {
@@ -72,8 +72,9 @@ describe("EuroMillionsDB", () => {
                 key: newKey,
                 checked: false
             };
-            connector.update(newRecord, "@TestUser").
+            connector.update(newRecord).
             then((data) => {
+                console.log(data.result.nModified);
                 if (data.result.nModified === 1) {
                     done();
                 } else {
@@ -88,7 +89,7 @@ describe("EuroMillionsDB", () => {
     });
     it("Should retreive a record", (done) => {
         setTimeout(() => {
-            connector.getRecords(record).
+            connector.getRecords({checked: false}).
             then((data) => {
                 if (data.length > 0) {
                     done();
