@@ -55,7 +55,6 @@ Twitter.stream("statuses/filter", { track: "#MakeMeRichEuromillions" }, function
     });
 });
 let rule = new schedule.RecurrenceRule();
-//rule.minute = new schedule.Range(0, 59, 1);
 rule.dayOfWeek = [2, 5];
 rule.hour = 20;
 rule.minute = 20;
