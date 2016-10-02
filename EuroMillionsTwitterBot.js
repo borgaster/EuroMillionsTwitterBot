@@ -12,7 +12,7 @@ let connector = EuroMillionsDB(process.env.MONGODB_URI, "EuroMillions");
 let http = require('http');
 let PORT = process.env.PORT || 8080;
 function handleRequest(request, response){
-    response.end('It Works!! Path Hit: ' + request.url);
+    response.end("EuroMillions Twitter Bot. Powered by Heroku");
 }
 let server = http.createServer(handleRequest);
 server.listen(PORT, function(){
