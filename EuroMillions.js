@@ -14,7 +14,7 @@ let EuroMillions = {
     generateKey() {
         let key = {
             numbers: Array.from({length: 50}, (v, k) => k + 1).shuffle().slice(0, 5),
-            stars: Array.from({length: 11}, (v, k) => k + 1).shuffle().slice(0, 2)
+            stars: Array.from({length: 12}, (v, k) => k + 1).shuffle().slice(0, 2)
         };
         return key;
     }
