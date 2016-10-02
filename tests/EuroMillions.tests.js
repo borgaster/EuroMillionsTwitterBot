@@ -28,7 +28,7 @@ describe("EuroMillionsKey", function() {
         key.numbers.should.all.be.within(1, 50);
     });
     it("Stars should be between 1 and 11", function() {
-        key.stars.should.all.be.within(1, 11);
+        key.stars.should.all.be.within(1, 12);
     });
     it("Stars should be unique", function() {
         expect(key.stars.length === new Set(key.stars).size ).to.be.true;
