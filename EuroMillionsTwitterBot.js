@@ -5,7 +5,7 @@ let secret = require("./TwitterApiKeys.js");
 let EuroMillionsDraw = require("./EuroMillionsDraw.js");
 let schedule = require("node-schedule");
 let Twitter = new TwitterPackage(secret);
-let connector = EuroMillionsDB("mongodb://localhost:27017/EuroMillionsDraw", "EuroMillions");
+let connector = EuroMillionsDB(process.env.MONGODB_URI, "EuroMillions");
 
 let rule = new schedule.RecurrenceRule();
 rule.minute = new schedule.Range(0, 59, 1);
