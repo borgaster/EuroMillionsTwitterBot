@@ -4,6 +4,7 @@ let EuroMillionsDB = require("./EuroMillionsDB.js");
 let secret = require("./TwitterApiKeys.js");
 let EuroMillionsDraw = require("./EuroMillionsDraw.js");
 let schedule = require("node-schedule");
+let port = process.env.PORT || 5000;
 let Twitter = new TwitterPackage(secret);
 let connector = EuroMillionsDB(process.env.MONGODB_URI, "EuroMillions");
 
