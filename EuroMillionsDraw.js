@@ -11,7 +11,7 @@ let options = {
     json: true, // Use,If you are sending JSON data
     headers: {
         // Specify headers, If any
-        "X-Mashape-Key": "IVaS9kmtSimshTpovHj6wXeTbyfAp1OeXCBjsngxP7bPEMnUPI"
+        "X-Mashape-Key": process.env.MASHAPE_TOKEN_KEY
     }
 };
 
