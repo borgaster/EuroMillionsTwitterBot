@@ -3,7 +3,7 @@ let TwitterPackage = require("twitter");
 let EuroMillionsDB = require("./EuroMillionsDB.js");
 let secret = require("./TwitterApiKeys.js");
 let Twitter = new TwitterPackage(secret);
-let connector = EuroMillionsDB("mongodb://localhost:27017/EuroMillionsDraw", "EuroMillions");
+let connector = EuroMillionsDB(process.env.MONGODB_URI, "EuroMillions");
 
 let options = {
     method: "get",
