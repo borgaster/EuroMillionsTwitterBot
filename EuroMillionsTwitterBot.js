@@ -4,12 +4,11 @@ let EuroMillionsDB = require("./EuroMillionsDB.js");
 let secret = require("./TwitterApiKeys.js");
 let EuroMillionsDraw = require("./EuroMillionsDraw.js");
 let schedule = require("node-schedule");
-let port = process.env.PORT || 5000;
 let Twitter = new TwitterPackage(secret);
 let connector = EuroMillionsDB(process.env.MONGODB_URI, "EuroMillions");
 
 //Heroku bindings
-let http = require('http');
+let http = require("http");
 let PORT = process.env.PORT || 8080;
 function handleRequest(request, response){
     response.end("EuroMillions Twitter Bot. Powered by Heroku");
