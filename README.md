@@ -1,6 +1,6 @@
 # EuroMillionsTwitterBot
 A twitter bot that gives you an Euro Millions key so you might get filthy rich! (Or maybe not)
-It is currently live, powered by Heroku.
+<p>It is currently live, powered by <a href="http://www.heroku.com">Heroku</a>.</p>
 
 <p>How to use it:</p>
 <ol>
