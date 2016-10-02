@@ -10,7 +10,7 @@ let connector = EuroMillionsDB(process.env.MONGODB_URI, "EuroMillions");
 
 //Heroku bindings
 let http = require('http');
-let PORT = process.env.PORT || 8080; 
+let PORT = process.env.PORT || 8080;
 function handleRequest(request, response){
     response.end('It Works!! Path Hit: ' + request.url);
 }
