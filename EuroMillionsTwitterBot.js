@@ -7,17 +7,6 @@ let schedule = require("node-schedule");
 let Twitter = new TwitterPackage(secret);
 let connector = EuroMillionsDB(process.env.MONGODB_URI, "EuroMillions");
 
-//Heroku bindings
-let http = require("http");
-let PORT = process.env.PORT || 8080;
-function handleRequest(request, response){
-    response.end("EuroMillions Twitter Bot. Powered by Heroku");
-}
-let server = http.createServer(handleRequest);
-server.listen(PORT, function(){
-    console.log("Server listening on: http://localhost:%s", PORT);
-});
-
 Twitter.stream("statuses/filter", { track: "#MakeMeRichEuromillions" }, function(stream) {
     stream.on("data", function(tweet) {
         console.log(tweet.text);
