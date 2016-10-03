@@ -1,1 +1,1 @@
-web: node EuroMillionsTwitterBot.js
+worker: node EuroMillionsTwitterBot.js
