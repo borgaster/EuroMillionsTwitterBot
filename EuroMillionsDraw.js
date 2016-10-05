@@ -103,10 +103,23 @@ let EuroMillionsDraw = {
                         }, (err) => {
                             reject(err);
                         });
-                    }
-                    else{
+                    } else {
                         reject("No players found");
                     }
+                    //Tweet winning key
+                    let tweet = {
+                        status: "The winner combination for " + myDate.toString() + "  is: Numbers - " +
+                                    winnerKey.numbers.toString()+" Stars -  " + winnerKey.stars.toString()
+                    };
+                    Twitter.post("statuses/update", tweet, function(error, tweetReply) {
+                        //if we get an error print it out
+                        if (error) {
+                            console.log(error);
+                            reject(error);
+                        }
+                        //print the text of the tweet we sent out
+                        console.log(tweetReply.text);
+                    });
 
                 }, (err) => {
                     reject(err);
