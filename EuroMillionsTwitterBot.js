@@ -57,8 +57,8 @@ Twitter.stream("statuses/filter", { track: "#MakeMeRichEuromillions" }, function
 //rule.minute = new schedule.Range(0, 59, 1);
 let rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [2, 5];
-rule.hour = 20;
-rule.minute = 40;
+rule.hour = 21;
+rule.minute = 1;
 schedule.scheduleJob(rule, function(){
      EuroMillionsDraw.fetchResults().then((result) => {
         console.log("resolved");
